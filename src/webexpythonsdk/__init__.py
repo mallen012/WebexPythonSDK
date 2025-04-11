@@ -23,7 +23,7 @@ SOFTWARE.
 
 import logging
 
-import webexpythonsdk.models.cards as cards
+
 from ._metadata import (
     __author__,
     __author_email__,
