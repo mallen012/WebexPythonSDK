@@ -53,40 +53,40 @@ def check_type(
         return
 
     if is_list:
-        # Check that all objects the list are of the required type(s)
-        if not isinstance(obj, list):
-            error_message = (
-                "We were expecting to receive a list of objects of the "
-                "following types: "
-                f"{', '.join([repr(t.__name__) for t in acceptable_types])}"
-                f"{' or None' if optional else ''}; instead we received "
-                f"{obj} which is a {repr(type(obj).__name__)}."
-            )
-            raise TypeError(error_message)
-
-        for o in obj:
-            if not isinstance(o, acceptable_types):
-                error_message = (
-                    "We were expecting to receive an object of one of the "
-                    "following types: "
-                    f"{', '.join(repr(t.__name__) for t in acceptable_types)}"
-                    f"{' or None' if optional else ''}; instead we "
-                    f"received {o} which is a {repr(type(o).__name__)}."
-                )
-                raise TypeError(error_message)
-        return
-
-    if isinstance(obj, acceptable_types):
-        return
-    else:
+    if not isinstance(obj, list):
+        expected_types = ", ".join([repr(t.__name__) for t in acceptable_types])
+        optional_text = " or None" if optional else ""
         error_message = (
-            "We were expecting to receive an instance of one of the following "
-            f"types: {', '.join(repr(t.__name__) for t in acceptable_types)}"
-            f"{' or None' if optional else ''}; but instead we received "
+            "We were expecting to receive a list of objects of the "
+            f"following types: {expected_types}{optional_text}; instead we received "
             f"{obj} which is a {repr(type(obj).__name__)}."
         )
-
         raise TypeError(error_message)
+
+    for o in obj:
+        if not isinstance(o, acceptable_types):
+            expected_types = ", ".join([repr(t.__name__) for t in acceptable_types])
+            optional_text = " or None" if optional else ""
+            error_message = (
+                "We were expecting to receive an object of one of the "
+                f"following types: {expected_types}{optional_text}; instead we "
+                f"received {o} which is a {repr(type(o).__name__)}."
+            )
+            raise TypeError(error_message)
+    return
+
+if isinstance(obj, acceptable_types):
+    return
+else:
+    expected_types = ", ".join([repr(t.__name__) for t in acceptable_types])
+    optional_text = " or None" if optional else ""
+    error_message = (
+        "We were expecting to receive an instance of one of the following "
+        f"types: {expected_types}{optional_text}; but instead we received "
+        f"{obj} which is a {repr(type(obj).__name__)}."
+    )
+    raise TypeError(error_message)
+
 
 
 def validate_input(
