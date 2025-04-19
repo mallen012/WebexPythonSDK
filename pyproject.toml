@@ -3,14 +3,14 @@
 # -------------------------------------------------------------------------------------------------
 
 [tool.poetry]
-name = "webexpythonsdk"
+name = "MA_webexpythonsdk"
 version = "0.0.0"  # This will be overwritten by the build process
-description = "Work with the Webex APIs in native Python!"
-authors = ["Chris Lunsford <cm@lunsford.io>"]
+description = "Work with the Webex APIs in native Python!, no cards"
+authors = ["Mike Allen <mikeall@go2cisco.com>"]
 license = "MIT"
 readme = "README.rst"
-homepage = "https://github.com/WebexCommunity/WebexPythonSDK"
-repository = "https://github.com/WebexCommunity/WebexPythonSDK"
+homepage = "https://github.com/mallen012/WebexPythonSDK"
+repository = "https://github.com/mallen012/WebexPythonSDK"
 documentation = "https://webexcommunity.github.io/WebexPythonSDK"
 include = ["LICENSE", "README.rst"]
 keywords = ["cisco", "webex", "api", "sdk", "python"]
