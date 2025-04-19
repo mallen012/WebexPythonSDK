@@ -23,7 +23,6 @@ SOFTWARE.
 
 from requests_toolbelt import MultipartEncoder
 
-from webexpythonsdk.models.cards import AdaptiveCard
 from ..generator_containers import generator_container
 from ..restsession import RestSession
 from ..utils import (
